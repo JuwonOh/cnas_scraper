@@ -1,5 +1,6 @@
 import re
 import time
+from dateutil.parser import parse
 from .parser import parse_page
 from .utils import get_soup
 from .utils import news_dateformat
@@ -37,7 +38,7 @@ def yield_latest_report(begin_date, max_num=10, sleep=1.0):
     """
 
     # prepare parameters
-    d_begin = strf_to_datetime(begin_date, user_dateformat)
+    d_begin = parse(begin_date)
     end_page = 72
     n_news = 0
     outdate = False
@@ -62,8 +63,11 @@ def yield_latest_report(begin_date, max_num=10, sleep=1.0):
 
             news_json = parse_page(url)
 
+            if None == news_json:
+                return None
+
             # check date
-            d_news = strf_to_datetime(news_json['date'], news_dateformat)
+            d_news = news_json['date']
             if d_begin > d_news:
                 outdate = True
                 print('Stop scrapping. {} / {} report was scrapped'.format(n_news, max_num))
@@ -126,7 +130,7 @@ def yield_latest_article(begin_date, max_num=10, sleep=1.0):
     """
 
     # prepare parameters
-    d_begin = strf_to_datetime(begin_date, user_dateformat)
+    d_begin = parse(begin_date)
     end_page = 72
     n_news = 0
     outdate = False
@@ -150,9 +154,11 @@ def yield_latest_article(begin_date, max_num=10, sleep=1.0):
         for url in links_all:
 
             news_json = parse_page(url)
+            if None == news_json:
+                return None
 
             # check date
-            d_news = strf_to_datetime(news_json['date'], news_dateformat)
+            d_news = news_json['date']
             if d_begin > d_news:
                 outdate = True
                 print('Stop scrapping. {} / {} article was scrapped'.format(n_news, max_num))
