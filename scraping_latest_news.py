@@ -50,6 +50,10 @@ def scraping(begin_date, max_num, sleep, directory, verbose):
                 filename = re.sub("[\/:*?\<>|]","",json_obj['content_url'].split('/')[-1])
                 download_path = '{}/{}'.format(directory, filename)
                 download(json_obj['content_url'], download_path)
+        except Exception as e:
+            n_exceptions += 1
+            print(e)
+            continue
         if verbose:
             title = json_obj['title']
             time = json_obj['date']
