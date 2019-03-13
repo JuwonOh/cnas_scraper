@@ -1,5 +1,5 @@
 # cnas_scraper
-미국의 씽크탱크인 Center for a New American Security의 자료들(reports, commentar, congressional-testimony, transcript, blog)을 받아오기 위한 크롤러입니다.
+미국의 씽크탱크인 Center for a New American Security(https://www.cnas.org)의 자료들(reports, commentar, congressional-testimony, transcript, blog)을 받아오기 위한 크롤러입니다.
 
 ## User guide# rand_scraper
 
