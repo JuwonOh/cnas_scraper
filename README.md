@@ -1,10 +1,6 @@
 # cnas_scraper
 미국의 씽크탱크인 Center for a New American Security(https://www.cnas.org)의 자료들(reports, commentar, congressional-testimony, transcript, blog)을 받아오기 위한 크롤러입니다.
 
-## User guide# rand_scraper
-
-미국의 싱크탱크인 랜드 연구소(The RAND Corporation, https://www.rand.org)의 자료들을 받아오는 크롤러입니다. 랜드 연구소내의 2가지 자료들(Blog post, Reserch paper)들에 대한 자료를 받아옵니다.
-
 ## User guide
 
 크롤러의 파이썬 파일은 util.py, scraper.py, parser.py, downloader.py 그리고 scraping_latest_news.py 총 다섯가지로 구성되어 있습니다. 
